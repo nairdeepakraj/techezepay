@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyPay</title>
+
+    <!-- Styles -->
     <style>
+        /* Global Styles */
         body {
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #f5f5f5, #e8f5e9);
@@ -26,19 +29,24 @@
             width: 180px;
         }
 
+        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 60px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 60px 40px;
             background: linear-gradient(135deg, #e8f5e9, #ffffff);
-            color: #333;
             border-bottom: 5px solid #4cd080;
         }
 
-        .logo-container {
-            margin-bottom: 30px;
+        .hero-content {
+            flex: 1;
+            max-width: 50%;
+            padding: 20px;
         }
 
-        .hero h1 {
+        .hero-content h1 {
             font-size: 2.8em;
             color: #105d38;
             font-weight: bold;
@@ -50,18 +58,6 @@
             margin: 20px 0;
         }
 
-        .highlighted-text p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #333;
-        }
-
-        .highlight {
-            color: #4cd080;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
         .hero-list {
             list-style: none;
             padding: 0;
@@ -70,11 +66,9 @@
 
         .hero-list li {
             font-size: 1.2em;
-            color: #555;
-            margin: 10px 0;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
         .hero-icon {
@@ -83,234 +77,357 @@
             margin-right: 10px;
         }
 
-        .cta-button {
-            background-color: #4cd080;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .cta-button:hover {
-            background-color: #43b46b;
-            transform: scale(1.05);
-        }
-
-        .about {
-            padding: 50px 20px;
+        .image-section {
+            flex: 1;
+            max-width: 45%;
             text-align: center;
-            background-color: white;
         }
 
-        .card {
-            background: #f9f9f9;
-            margin: 20px;
-            padding: 20px;
+        .featured-image {
+            width: 100%;
+            max-width: 500px;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .beliefs-grid {
+        /* About Us and Features */
+        .why-choose-us, .info-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .beliefs-grid, .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
-        .belief-item {
+        .belief-item, .feature-item, .card {
             background: #f9f9f9;
             border-radius: 10px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .belief-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .icon {
-            font-size: 2.5em;
-            color: #4cd080;
-            margin-bottom: 10px;
-        }
-
-        .belief-item h3 {
-            font-size: 1.5em;
-            color: #105d38;
-            margin-bottom: 10px;
-        }
-
-        .belief-item p {
-            color: #555;
-            font-size: 1em;
-        }
-
-        .why-choose-us {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #ffffff, #e8f5e9);
-        }
-
-        .why-choose-us h2 {
-            font-size: 2.5em;
-            color: #105d38;
-            margin-bottom: 30px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-item {
-            background: #f9f9f9;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-item h3 {
-            font-size: 1.5em;
-            color: #105d38;
-            margin-bottom: 10px;
-        }
-
-        .contact-us {
-            padding: 60px 20px;
+        /* Contact Form */
+        .contact-form {
+            padding: 60px 30px;
             text-align: center;
             background: linear-gradient(135deg, #f0f4f7, #e3f2fd);
             color: #333;
         }
 
-        .cta {
-            padding: 60px 20px;
-            text-align: center;
+        .contact-form h2 {
+            font-size: 2.5em;
+            color: #105d38;
+            margin-bottom: 30px;
+        }
+            
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px 40px; /* Added horizontal padding for left and right */
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        form div {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 1em;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .submit-button {
             background-color: #4cd080;
             color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 0 auto;
         }
+
+        .submit-button:hover {
+            background-color: #43b46b;
+        }
+        /* Who Are We Section */
+.who-we-are {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.who-we-are-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.who-we-are-text {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+}
+
+.who-we-are-text h2 {
+    font-size: 2.5em;
+    color: #105d38;
+    margin-bottom: 20px;
+}
+
+.who-we-are-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+}
+
+.who-we-are-image {
+    flex: 1;
+    max-width: 45%;
+    text-align: center;
+}
+
+.who-we-are-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Our Expertise Section */
+.our-expertise {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.our-expertise h2 {
+    font-size: 2.5em;
+    color: #105d38;
+    margin-bottom: 30px;
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.expertise-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.expertise-item h3 {
+    font-size: 1.5em;
+    color: #105d38;
+    margin-bottom: 15px;
+}
+
+.expertise-item p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+.who-are-we-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
     </style>
 </head>
 
 <body>
     <div class="App">
+        <!-- Header -->
+        <header class="header">
+            <img src="./logo.PNG" alt="Company Logo" class="logo">
+        </header>
+
         <!-- Hero Section -->
         <section class="hero">
-            <div class="logo-container">
-                <img src="./logo.png" alt="Company Logo" class="logo" height="40px" width="100px"/>
+            <div class="image-section">
+                <img src="./dashboard.png" alt="Fast Digital Payments" class="featured-image">
             </div>
-            <h1>Revolutionizing Payments for the US</h1>
-            <p class="hero-subtext">Experience Payments Like Never Before</p>
-            <div class="highlighted-text">
-                <p>Welcome to a <span class="highlight">new era</span> of payments—faster, smarter, and more affordable than ever!</p>
-                <p>Built by <span class="highlight">industry veterans</span>, our platform is here to revolutionize the US payment landscape with:</p>
+            <div class="hero-content">
+                <h1>Revolutionizing Payments for the US</h1>
+                <p class="hero-subtext">Experience Payments Like Never Before</p>
+                <ul class="hero-list">
+                    <li><span class="hero-icon">💲</span> <strong>40% Lower Transaction Fees</strong></li>
+                    <li><span class="hero-icon">⏱️</span> <strong>15-Second Settlements</strong></li>
+                    <li><span class="hero-icon">🔗</span> <strong>Seamless Integrations</strong></li>
+                </ul>
             </div>
-            <ul class="hero-list">
-                <li><span class="hero-icon">💲</span> <strong>40% Lower Transaction Fees</strong></li>
-                <li><span class="hero-icon">⏱️</span> <strong>15-Second Settlements</strong></li>
-                <li><span class="hero-icon">🔗</span> <strong>Seamless, Hassle-Free Integrations</strong></li>
-            </ul>
         </section>
 
         <!-- About Us Section -->
-        <section class="about">
-            <div class="card">
-                <h2>Who We Are</h2>
-                <p>We are a passionate team of payment industry experts, united by a bold mission: to bring the transformative power of FedNow to the US.</p>
-            </div>
-            <div class="card">
-                <h2>What We Believe In</h2>
-                <div class="beliefs-grid">
-                    <div class="belief-item">
-                        <div class="icon">⚡</div>
-                        <h3>Efficiency</h3>
-                        <p>Slash transaction costs for businesses and consumers.</p>
-                    </div>
-                    <div class="belief-item">
-                        <div class="icon">🚀</div>
-                        <h3>Speed</h3>
-                        <p>Achieve near-instant settlements with cutting-edge integrations.</p>
-                    </div>
-                    <div class="belief-item">
-                        <div class="icon">🌿</div>
-                        <h3>Simplicity</h3>
-                        <p>Streamline payments with fully digital, eco-friendly solutions.</p>
-                    </div>
-                    <div class="belief-item">
-                        <div class="icon">🌎</div>
-                        <h3>Accessibility</h3>
-                        <p>Empower businesses of all sizes with advanced payment technology.</p>
-                    </div>
-                </div>
+        <section class="why-choose-us">
+            <h2>What We Believe In</h2>
+            <div class="beliefs-grid">
+                <div class="belief-item"><h3>⚡ Efficiency</h3><p>Reduce transaction costs for businesses.</p></div>
+                <div class="belief-item"><h3>🚀 Speed</h3><p>Instant settlements with cutting-edge tech.</p></div>
+                <div class="belief-item"><h3>🌿 Simplicity</h3><p>Streamlined digital payment solutions.</p></div>
+                <div class="belief-item"><h3>🌎 Accessibility</h3><p>Advanced technology for all businesses.</p></div>
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
-        <section class="why-choose-us">
-            <h2>Why Choose Us?</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="icon">💰</div>
-                    <h3>40% Lower Transaction Fees</h3>
-                    <p>Cut costs without compromising on safety or transparency.</p>
+        <section class="who-we-are">
+            <div class="who-we-are-container">
+                <div class="who-we-are-text">
+                    <h2>🌟 Who Are We?</h2>
+                    <p>At EasyPay, we are a team of passionate professionals dedicated to transforming the payment industry. 
+                       With deep industry experience, we’re driven by a mission to simplify and accelerate digital transactions for businesses of all sizes.</p>
+                    <p>Our goal is to empower businesses with seamless, secure, and cost-effective payment solutions that drive growth and innovation.</p>
                 </div>
-                <div class="feature-item">
-                    <div class="icon">⚡</div>
-                    <h3>15-Second Settlements</h3>
-                    <p>Accelerate cash flow and operational efficiency like never before.</p>
+                <div class="who-we-are-image">
+                    <img src="./Who_are_we.png" alt="Team of Professionals" class="who-are-we-img">
                 </div>
-                <div class="feature-item">
-                    <div class="icon">📱</div>
-                    <h3>Completely Digital Transactions</h3>
-                    <p>Go paperless with eco-friendly, seamless workflows.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">🔗</div>
-                    <h3>Lightning-Fast Integrations</h3>
-                    <p>Get started quickly with developer-friendly APIs and streamlined onboarding.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">🎁</div>
-                    <h3>Cashback Rewards</h3>
-                    <p>Build customer loyalty with every payment.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon">🔒</div>
-                    <h3>Top-Notch Security</h3>
-                    <p>Advanced encryption, risk-based monitoring, and fraud detection ensure every transaction is secure.</p>
+            </div>
+        </section>
+        
+        <!-- Our Expertise Section -->
+        <section class="our-expertise">
+            <div class="our-expertise-container">
+                <h2>💡 Our Expertise</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-item">
+                        <h3>🔒 Payment Security</h3>
+                        <p>Advanced encryption and real-time fraud detection ensure every transaction is secure.</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>⚡ Instant Transactions</h3>
+                        <p>Lightning-fast settlements that help businesses streamline cash flow and operations.</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>🔗 Seamless Integrations</h3>
+                        <p>Developer-friendly APIs and hassle-free onboarding for a smooth setup.</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>💼 Custom Solutions</h3>
+                        <p>Tailored payment solutions to meet the unique needs of every business.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Us Section -->
-        <section class="contact-us">
+        <section class="contact-form">
             <h2>Contact Us Today</h2>
-            <div class="contact-details">
-                <p><strong>Email:</strong> <a href="mailto:hello@easypay.inc">hello@easypay.inc</a></p>
-                <p><strong>Address:</strong> Washington DC, United States</p>
-            </div>
+            <form action="#" method="post" id="contactForm">
+                <div>
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="organization">Organization*</label>
+                    <input type="text" id="organization" name="organization" required>
+                </div>
+                <div>
+                    <label for="job-title">Job Title*</label>
+                    <input type="text" id="job-title" name="job-title" required>
+                </div>
+                <div>
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="phone">Phone Number*</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div>
+                    <label for="message">How can we help?</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+            </form>
         </section>
-
-        <!-- CTA Section -->
-<!--         <section class="cta">
-            <h2>Let’s Build the Future of Payments Together</h2>
-            <p>We are on a mission to democratize payments and need forward-thinking investors to join us in reshaping the US payment landscape.</p>
-            <button class="cta-button">Invest Now</button>
-        </section> -->
     </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Integration -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAnhU5FlO_sej3vroKNtaHUyy536o1eweY",
+                authDomain: "easypay-2e8e5.firebaseapp.com",
+                projectId: "easypay-2e8e5",
+                storageBucket: "easypay-2e8e5.appspot.com", 
+                messagingSenderId: "943346754560",
+                appId: "1:943346754560:web:05ccacf9384ca7fd8624e5",
+                measurementId: "G-YLMFKJCZP6"
+            };
+   
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+   
+            const contactForm = document.getElementById('contactForm');
+   
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();  // Prevent page reload
+   
+                const name = document.getElementById('name').value;
+                const organization = document.getElementById('organization').value;
+                const jobTitle = document.getElementById('job-title').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+   
+                db.collection("contacts").add({
+                    name: name,
+                    organization: organization,
+                    jobTitle: jobTitle,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                    timestamp: new Date()
+                })
+                .then(() => {
+                    alert("Your message has been sent successfully!");
+                    contactForm.reset(); 
+                })
+                .catch((error) => {
+                    console.error(" Error sending message: ", error);
+                    alert("Failed to send your message. Please try again.");
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
